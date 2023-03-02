@@ -58,8 +58,8 @@
         <div class="dropdown">
             <span>Settings</span>
             <div class="dropdown-content">
-                <a id="tileBarBoardInfo">Board Info</a>
-                <br>
+                <!--a id="tileBarBoardInfo">Board Info</a>
+                <br-->
                 <a id="tileBarBoardConfig">Board Configuration</a>
                 <br>
                 <a id="tileBarBoardCalib">Board Calibration</a>
@@ -71,17 +71,17 @@
                 </a>
             </div>
         </div>
-        <div class="dropdown hidden">
+        <div class="dropdown">
             <!-- remove hidden class if logging works -->
             <span id="logging-span">Logging</span>
             <div class="dropdown-content">
-                <p id="tileBarSelectDataloggingDirectory">Select Directory</p>
+                <div id="tileBarSelectDataLoggingFile">
+                    <a>Select File</a>
+                    <br>
+                </div>
+                <a id="tileBarStartDataLogging">Start data logging</a>
                 <br>
-                <p id="tileBarStartDatalogging">Start Datalogging</p>
-                <br>
-                <p id="tileBarStopDatalogging">Stop Datalogging</p>
-                <br>
-                <p id="titleBarMergeFiles">ALPHA Merge VESC and BMS Logging Files</p>
+                <a id="tileBarStopDataLogging">Stop data logging</a>
             </div>
         </div>
         <div id="tileBarAbout">
@@ -103,7 +103,7 @@
         </div>
 
         <div>
-            <span id="version-number" class="blue">3.0</span>
+            <span id="version-number" class="blue">3.5</span>
         </div>
     </div>
 
@@ -1472,6 +1472,7 @@
 
                     <td>
                         <label for="in-volt2-correction">Set value:</label>
+                        <br>
                         <input id="in-volt2-correction" type="number">
                     </td>
                     <td>
@@ -1537,6 +1538,7 @@
                 <tr>
                     <td>
                         <label for="out-volt-correction">Set value:</label>
+                        <br>
                         <input id="out-volt-correction" type="number">
                     </td>
                     <td>
@@ -1652,6 +1654,15 @@
 
 
     <div class="elementsdiv" id="elementsDiv">
+
+
+        <!-- Don't know where else to put it -->
+        <a id="aDownloadFile" download></a>
+
+
+
+
+
         <div class="gauge-div flex-center" id="clearAlertsTd">
             <div class="text-align-center">
                 <h2 id="clearAlerts-fault-name">Fault</h2>
@@ -1724,6 +1735,8 @@
 <script src="js/helpers/color_mode.js"></script>
 <script src="js/helpers/configcalib_processing.js"></script>
 <script src="js/helpers/zoom.js"></script>
+<script src="js/helpers/fileaccess.js"></script>
+
 
 <script src="js/tilebar.js"></script>
 <script src="js/settings_detection.js"></script>
@@ -1742,6 +1755,7 @@
 <script src="js/dataProcessing/inline_gathering.js"></script>
 <script src="js/dataProcessing/bms_processing.js"></script>
 <script src="js/dataProcessing/inline_processing.js"></script>
+<script src="js/dataProcessing/datalogging.js"></script>
 
 <script src="js/ble/bmsServiceInit.js"></script>
 <script src="js/ble/bms.js"></script>
