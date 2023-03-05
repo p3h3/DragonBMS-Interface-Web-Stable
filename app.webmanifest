@@ -1,6 +1,6 @@
 {
-  "name": "DragonBMS Interface",
-  "short_name": "DragonBMS",
+  "name": "VoltaicBMS Interface",
+  "short_name": "VoltaicBMS",
   "theme_color": "#333333",
   "background_color": "#000000",
   "display": "fullscreen",

@@ -7,7 +7,7 @@
     <!-- maybe not good but makes the mobile zoom work and disables input zoom in on mobile -->
     <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 
-    <title>DragonBMS Interface</title>
+    <title>VoltaicBMS Interface</title>
 
     <!--
         STYLESHEETS FOR THE INTERFACE
@@ -18,6 +18,7 @@
     -->
     <link rel="stylesheet" href="css/index-dark.css">
 
+    <link rel="stylesheet" href="css/colors.css">
     <link rel="stylesheet" href="css/fonts.css">
     <link rel="stylesheet" href="css/tables.css">
     <link rel="stylesheet" href="css/dynamic-style.css">
@@ -36,6 +37,8 @@
     Library stylesheets
     -->
     <link rel="stylesheet" href="css/libraries/coloris.css"/>
+    <link rel="stylesheet" href="css/libraries/simplekeyboard.css">
+
 
 
     <!-- COOL, this is a progressive web app now -->
@@ -58,8 +61,8 @@
         <div class="dropdown">
             <span>Settings</span>
             <div class="dropdown-content">
-                <!--a id="tileBarBoardInfo">Board Info</a>
-                <br-->
+                <a id="tileBarBoardInfo">Board Info</a>
+                <br>
                 <a id="tileBarBoardConfig">Board Configuration</a>
                 <br>
                 <a id="tileBarBoardCalib">Board Calibration</a>
@@ -72,7 +75,6 @@
             </div>
         </div>
         <div class="dropdown">
-            <!-- remove hidden class if logging works -->
             <span id="logging-span">Logging</span>
             <div class="dropdown-content">
                 <div id="tileBarSelectDataLoggingFile">
@@ -84,26 +86,29 @@
                 <a id="tileBarStopDataLogging">Stop data logging</a>
             </div>
         </div>
-        <div id="tileBarAbout">
-            <span>About</span>
-        </div>
-        <div id="tileBarDarkmode">
-            <span>Style</span>
+        <div class="dropdown">
+            <span>Interface</span>
+            <div class="dropdown-content">
+                <a id="tileBarAbout">Settings</a>
+                <br>
+                <a id="tileBarDarkmode">Toggle Style</a>
+                <br>
+                <a id="tileBarEdit">Edit Tiles</a>
+            </div>
         </div>
 
     </div>
 
     <div id="tilebar-right">
-        <div>
-            <span class="bms-hz">BMS: </span>
-        </div>
 
-        <div>
-            <span class="tacho-hz">T: </span>
-        </div>
+        <div class="dropdown">
+            <span class="version-number-field accent"></span>
 
-        <div>
-            <span id="version-number" class="blue">3.5</span>
+            <div class="dropdown-content">
+                <a class="bms-hz">BMS: </a>
+                <br>
+                <a class="tacho-hz">Tacho: </a>
+            </div>
         </div>
     </div>
 
@@ -114,13 +119,13 @@
     <div id="autoConnectContainer">
 
         <div id="autoconnectBMS">
-            <h4 id="autoconnectingBMSText">Connecting..</h4>
+            <h4 id="autoconnectingBMSText" class="hidden">Connecting..</h4>
             <h2 id="autoconnectBMSText">Connect<br>
                 BMS</h2>
 
         </div>
         <div id="autoconnectInline">
-            <h4 id="autoconnectingTachoText">Connecting..</h4>
+            <h4 id="autoconnectingTachoText" class="hidden">Connecting..</h4>
             <h2 id="autoconnectTachoText">Connect<br>
                 Tacho</h2>
         </div>
@@ -162,7 +167,7 @@
                             </td>
                             <td>
                                 <div>
-                                    <div class="board-gauge-disabled"> <!-- board gauge disabled is only temporary - vehicle odo will be implemented eventually (@clemens) -->
+                                    <div>
                                         <h5 class="llh2">Vehicle Odometer:</h5>
                                         <h3 class="tacho-vehicle-odometer-value unit-label-below">0</h3>
                                         <h5 class="unit-label-below">km</h5>
@@ -221,7 +226,7 @@
                             <td>
                                 <div>
                                     <div>
-                                        <h5>BMS-Precharge<br>Temperature:</h5>
+                                        <h5 class="bms-precharge-temp-label">BMS<br>Temperature:</h5>
                                         <h3 class="bms-precharge-temp-value">°C</h3>
                                     </div>
                                 </div>
@@ -245,7 +250,7 @@
                             <td>
                                 <div>
                                     <div>
-                                        <h5>Extern<br>Temperature:</h5>
+                                        <h5>T-Extern<br>Temperature:</h5>
                                         <h3 class="tacho-extern-temp-value">°C</h3>
                                     </div>
                                 </div>
@@ -460,7 +465,7 @@
                             <td>
                                 <div>
                                     <div>
-                                        <h5>max<br>Precharge Temp:</h5>
+                                        <h5 class="bms-max-pch-temp-label">max<br>Temp:</h5>
                                         <h3 class="bms-max-pch-temp-value">°C</h3>
                                     </div>
                                 </div>
@@ -768,139 +773,19 @@
 
 
 
-    <div id="interface-info-container" class="hidden">
-        <img class="logo" src="img/icon/512x512.png" alt="voltaic logo">
-        <h2>DragonBMS Interface</h2>
-        <h3>Version:</h3>
-        <p id="version-number-2"></p>
-        <div class="decription-container">
-            <p>
-                DragonBMS Interface is a program for interfacing with the Voltaic DragonBMS System.
-
-                It both acts as a Monitor for live data, a data logger for later analysis and a configuration tool to
-                make the BMS fit your needs.
-            </p>
-
-            <p>
-                To really make the interface feel like your own, use the config:
-            </p>
-
-            <p>
-                (to make the color changes visible, go toggle "ColorMode" until you see the changes)
-            </p>
-
-            <div id="interface-configuration-table-container">
-                <table id="interface-configuration-table">
-                    <tr>
-                        <td>
-                            <label for="interface-foreground-color">Foreground Color</label>
-                        </td>
-
-                        <td class="full">
-                            <input id="interface-foreground-color" class="coloris foreground-color" type="text" data-coloris>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <label for="interface-background-color">Background Color</label>
-                        </td>
-                        <td class="full">
-                            <input id="interface-background-color" class="coloris background-color" type="text" data-coloris>
-                        </td>
-
-                    </tr>
-                    <tr>
-                        <td>
-                            <label for="interface-averaging-time-u">Averaging Time U[s]</label>
-                        </td>
-                        <td>
-                            <input id="interface-averaging-time-u" type="number" step="0.1">
-                        </td>
-
-                    </tr>
-                    <tr>
-                        <td>
-                            <label for="interface-averaging-time-i">Averaging Time I[s]</label>
-                        </td>
-                        <td>
-                            <input id="interface-averaging-time-i" type="number" step="0.1">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <label for="interface-averaging-time-t">Averaging Time T[s]</label>
-                        </td>
-                        <td>
-                            <input id="interface-averaging-time-t" type="number" step="0.1">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <label for="interface-averaging-time-calib">Averaging Time Calib[s]</label>
-                        </td>
-                        <td>
-                            <input id="interface-averaging-time-calib" type="number" step="0.1">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <label for="interface-max-value-hold-on-time">Max Value Hold on Time[s]</label>
-                        </td>
-                        <td>
-                            <input id="interface-max-value-hold-on-time" type="number" step="0.1">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <label for="interface-filter-bms-connection">Filter BMS Connection</label>
-                        </td>
-                        <td>
-                            <input id="interface-filter-bms-connection" type="checkbox">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <label for="interface-bms-auto-read-config-calib">Auto-Read BMS Config/Calib</label>
-                        </td>
-                        <td>
-                            <input id="interface-bms-auto-read-config-calib" type="checkbox">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <label for="interface-dev-tile-active">Dev-Tile active</label>
-                        </td>
-                        <td>
-                            <input id="interface-dev-tile-active" type="checkbox">
-                        </td>
-                    </tr>
-                </table>
-
-            </div>
-
-            <p>
-                As this is a progressive web app, the newest version is basically just a swipe down away.
-                As we found this feature to be a bit distracting in everyday use, you can enable the swipe down updates <b><u id="enable-swipe-down-update">here</u></b>
-            </p>
-            <p>Note: <br> I would kindly ask you to be a bit gentle as it's still a pre-release version that needs more development and testing. If you have severe problems or want to make a usability friendly suggestion, feel free to contact me!</p>
-            <p>You can reach me via: hi@p3h3.de</p>
-        </div>
-    </div>
-
-
-
-
 
     <div id="board-info-container" class="hidden">
-        <img class="logo" src="img/icon/512x512.png" alt="voltaic logo">
-        <h3>DragonBMS Interface</h3>
-        <br>
-        <p>Name:</p>
-        <p id="bms-device-name"></p>
-        <p>Hardware Version:</p>
-        <p id="bms-hardware-version"></p>
-        <p>Firmware Version:</p>
-        <p id="bms-firmware-version"></p>
+        <h2>VoltaicBMS Interface</h2>
+
+        <p>Model: <a class="bms-model-field"></a></p>
+
+        <p>Hardware Version: <a class="bms-hardware-version-field"></a></p>
+
+        <p>Firmware Version: <a class="bms-firmware-version-field"></a></p>
+
+        <a id="firmwareUpdateText" class="hidden"></a>
+
+        <p>Serial Number: <a class="bms-serial-number-field"></a></p>
     </div>
 
 
@@ -916,7 +801,7 @@
 
             <h2>Board Configuration:</h2>
 
-            <h4 id="config-write-warning" class="orange">Warning - might not be editable. Turn off first!</h4>
+            <h4 id="config-write-warning" class="warning">Warning - might not be editable. Turn off first!</h4>
 
             <div class="readwrite-button-container">
                 <button id="board-config-read">Read</button>
@@ -1102,7 +987,7 @@
                     <td><input id="strand-max-imbalance-current" type="number" min="1"></td>
                 </tr>
 
-                <tr>
+                <tr class="hidden">
                     <td>
                         <div class="dropdown">
                             <label for="spike-sensitivity-select">Current Spike sensitivity:</label>
@@ -1126,14 +1011,29 @@
                 <tr>
                     <td>
                         <div class="dropdown">
-                            <label for="logic-max-temp">Precharge Transistor max temperature [°C]:</label>
+                            <label for="load-capacitance">Load Capacitance [10uF]:</label>
                             <div class="dropdown-content">
+                                The load capacitance value is the input capacitance on your load's power connection. The
+                                value is used to estimate weather the right load or even any load is connected.
+                                If this setting is grossly wrong, it may lead to faults "nothing connected" faults.
+                            </div>
+                        </div>
+                    </td>
+                    <td><input id="load-capacitance" type="number" min="0" max="65534"></td>
+
+                </tr>
+
+                <tr>
+                    <td>
+                        <div class="dropdown">
+                            <label for="logic-max-temp">Extern max temperature [°C]:</label>
+                            <!--div class="dropdown-content">
                                 The precharge transistor regulated the current needed to charge the output capacitance (motor controllers, etc.).
                                 Per physics, this transistor dissipates the same energy that the capacitors are charged with, which
                                 means, that it gets warm. This max temperature may be set from experience to catch unusually high
                                 output capacities or to prolong the life of the transistor. You can't break anything with this setting
                                 as there is a self-protection mechanism.
-                            </div>
+                            </div-->
                         </div>
                     </td>
                     <td><input id="logic-max-temp" type="number" min="40" max="90"></td>
@@ -1145,7 +1045,7 @@
                         <div class="dropdown">
                             <label for="power-max-temp">Board max temperature [°C]:</label>
                             <div class="dropdown-content">
-                                The shunt temperature is a good representation of how warm the power stage of the DragonBMS is.
+                                The shunt temperature is a good representation of how warm the power stage of the VoltaicBMS is.
                                 You may set the temperature as you like if you need this BMS to be below a certain temperature
                                 As with the precharge transistor, setting this max temp lower might let you catch anomalies in your
                                 setup before it's too late.
@@ -1195,7 +1095,8 @@
                         <div class="dropdown">
                             <label for="bms-config-auto-power-off">Auto power off time [minutes]:</label>
                             <div class="dropdown-content">
-                                Not yet implemented
+                                Idle time before BMS automatically turns off. Idle is defined as either not in operation mode or
+                                <0.5A current drawn from each battery. Resets every time idle state is left.
                             </div>
                         </div>
                     </td>
@@ -1320,7 +1221,7 @@
                         <label for="inline-dl-frequency">Data Frequency [Hz]</label>
                     </td>
                     <td>
-                        <input id="inline-dl-frequency">
+                        <input id="inline-dl-frequency" type="number">
                     </td>
 
                 </tr>
@@ -1349,7 +1250,15 @@
                     <td>
                         <button id="resetPulses">Set to 0</button>
                         <br>
-                        Pulses: <span id="pulses"></span>
+
+                        <div>
+                            Pulses: <span id="pulses"></span>
+                            <div class="dropdown-content">
+                                If this value is jumping between big positive and big negative numbers, (overflowing)
+                                <br>
+                                please restart both the device and interface before calculating the dist/pulse.
+                            </div>
+                        </div>
                     </td>
 
                     <td>
@@ -1404,7 +1313,7 @@
         <div id="board-calibration-div">
 
             <h2>Calibration values:</h2>
-            <h4 id="calib-write-warning" class="orange">Warning - might not be editable. Turn off first!</h4>
+            <h4 id="calib-write-warning" class="warning">Warning - might not be editable. Turn off first!</h4>
 
             <div class="readwrite-button-container">
                 <button id="board-calib-read">Read</button>
@@ -1653,6 +1562,141 @@
     </div>
 
 
+
+
+    <div id="interface-settings-container" class="hidden">
+        <img class="logo" src="img/icon/512x512.png" alt="voltaic logo">
+        <h2>VoltaicBMS Interface</h2>
+        <h3>Version:</h3>
+        <p class="version-number-field"></p>
+        <div class="decription-container">
+            <p>
+                VoltaicBMS Interface is a program for interfacing with the Voltaic VoltaicBMS System.
+
+                It both acts as a Monitor for live data, a data logger for later analysis and a configuration tool to
+                make the BMS fit your needs.
+            </p>
+
+            <p>
+                To really make the interface feel like your own, use the config:
+            </p>
+
+            <p>
+                (to make the color changes visible, go toggle "ColorMode" until you see the changes)
+            </p>
+
+            <div id="interface-configuration-table-container">
+                <table id="interface-configuration-table">
+                    <tr>
+                        <td>
+                            <label for="interface-foreground-color">Foreground Color</label>
+                        </td>
+
+                        <td class="full">
+                            <input id="interface-foreground-color" class="coloris foreground-color" type="text" data-coloris>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="interface-background-color">Background Color</label>
+                        </td>
+                        <td class="full">
+                            <input id="interface-background-color" class="coloris background-color" type="text" data-coloris>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="interface-accent-color">Accent Color</label>
+                        </td>
+                        <td class="full">
+                            <input id="interface-accent-color" class="coloris accent" type="text" data-coloris>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="interface-averaging-time-u">Averaging Time U[s]</label>
+                        </td>
+                        <td>
+                            <input id="interface-averaging-time-u" type="number" step="0.1">
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="interface-averaging-time-i">Averaging Time I[s]</label>
+                        </td>
+                        <td>
+                            <input id="interface-averaging-time-i" type="number" step="0.1">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="interface-averaging-time-t">Averaging Time T[s]</label>
+                        </td>
+                        <td>
+                            <input id="interface-averaging-time-t" type="number" step="0.1">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="interface-averaging-time-calib">Averaging Time Calib[s]</label>
+                        </td>
+                        <td>
+                            <input id="interface-averaging-time-calib" type="number" step="0.1">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="interface-max-value-hold-on-time">Max Value Hold on Time[s]</label>
+                        </td>
+                        <td>
+                            <input id="interface-max-value-hold-on-time" type="number" step="0.1">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="interface-filter-bms-connection">Filter BLE Connection</label>
+                        </td>
+                        <td>
+                            <input id="interface-filter-bms-connection" type="checkbox">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="interface-bms-auto-read-config-calib">Auto-Read BMS Config/Calib</label>
+                        </td>
+                        <td>
+                            <input id="interface-bms-auto-read-config-calib" type="checkbox">
+                        </td>
+                    </tr>
+                </table>
+
+            </div>
+
+            <p>
+                As this is a progressive web app, the newest version is basically just a swipe down away.
+                As we found this feature to be a bit distracting in everyday use, you can enable the temporary swipe down <b><u id="enable-swipe-down-update">here</u></b>.
+            </p>
+            <p>Note: The swipe down updates are only temporary and will be forgotten once you restart the app. For permanent updates, confirm the update in the "new version" popup.</p>
+            <p>Note: <br> I would kindly ask you to be a bit gentle as it's still a pre-release version that needs more development and testing. If you have severe problems or want to make a usability friendly suggestion, feel free to contact me!</p>
+            <p>You can reach me via: hi@p3h3.de</p>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+    <div id="keyboard-container" class="hidden">
+        <div class="simple-keyboard"></div>
+    </div>
+
+
     <div class="elementsdiv" id="elementsDiv">
 
 
@@ -1726,11 +1770,12 @@
 
 
 <script src="js/libraries/coloris.js"></script>
+<script src="js/libraries/simplekeyboard.js"></script>
 
+<script src="js/helpers/small_functions.js"></script>
 
 <script src="js/serviceworker/sw_init.js"></script>
 
-<script src="js/helpers/small_functions.js"></script>
 <script src="js/dom_element_init.js"></script>
 <script src="js/helpers/color_mode.js"></script>
 <script src="js/helpers/configcalib_processing.js"></script>
@@ -1750,6 +1795,7 @@
 <script src="js/settings/board-config.js"></script>
 <script src="js/settings/inline-config.js"></script>
 <script src="js/settings/board-calib.js"></script>
+<script src="js/settings/virtualkeyboard.js"></script>
 
 <script src="js/dataProcessing/bms_gathering.js"></script>
 <script src="js/dataProcessing/inline_gathering.js"></script>
