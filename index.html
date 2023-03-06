@@ -87,13 +87,13 @@
             </div>
         </div>
         <div class="dropdown">
-            <span>Interface</span>
+            <span id="tilebar-interface-dropdown">Interface</span>
             <div class="dropdown-content">
                 <a id="tileBarAbout">Settings</a>
                 <br>
                 <a id="tileBarDarkmode">Toggle Style</a>
                 <br>
-                <a id="tileBarEdit">Edit Tiles</a>
+                <a id="tilebar-edit">Edit Tiles</a>
             </div>
         </div>
 
@@ -159,7 +159,15 @@
                             <td>
                                 <div>
                                     <div>
-                                        <h5><button id="resetTripOdo">Reset</button>Trip Odometer:</h5>
+                                        <h5>
+                                            <div class="dropdown">
+                                                Trip Odometer:
+                                                <div class="dropdown-content reset-dropdown">
+                                                    <p id="resetTripOdo">Reset</p>
+                                                </div>
+                                            </div>
+                                            <br>
+                                        </h5>
                                         <h3 class="tacho-trip-odometer-value unit-label-below">0</h3>
                                         <h5 class="unit-label-below">km</h5>
                                     </div>
@@ -178,9 +186,15 @@
                                 <div>
                                     <div>
                                         <h5>
-                                            <button id="resetEconomyButton">Reset</button>
-                                            Economy:
+                                            <div class="dropdown">
+                                                Economy:
+                                                <div class="dropdown-content reset-dropdown">
+                                                    <p id="resetEconomyButton">Reset</p>
+                                                </div>
+                                            </div>
+                                            <br>
                                         </h5>
+
                                         <h3 class="session-economy-value unit-label-below">0</h3>
                                         <h5 class="unit-label-below">Wh/km</h5>
                                     </div>
@@ -1614,37 +1628,54 @@
                     </tr>
                     <tr>
                         <td>
-                            <label for="interface-averaging-time-u">Averaging Time U[s]</label>
+                            <label for="interface-averaging-time-u">BMS Averaging Time U[s]</label>
                         </td>
                         <td>
-                            <input id="interface-averaging-time-u" type="number" step="0.1">
+                            <input id="interface-averaging-time-u" type="number" step="0.1" min="0.1">
                         </td>
 
                     </tr>
                     <tr>
                         <td>
-                            <label for="interface-averaging-time-i">Averaging Time I[s]</label>
+                            <label for="interface-averaging-time-i">BMS Averaging Time I[s]</label>
                         </td>
                         <td>
-                            <input id="interface-averaging-time-i" type="number" step="0.1">
+                            <input id="interface-averaging-time-i" type="number" step="0.1" min="0.1">
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <label for="interface-averaging-time-t">Averaging Time T[s]</label>
+                            <label for="interface-averaging-time-t">BMS Averaging Time T[s]</label>
                         </td>
                         <td>
-                            <input id="interface-averaging-time-t" type="number" step="0.1">
+                            <input id="interface-averaging-time-t" type="number" step="0.1" min="0.1">
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <label for="interface-averaging-time-calib">Averaging Time Calib[s]</label>
+                            <label for="interface-averaging-time-calib">BMS Averaging Time Calib[s]</label>
                         </td>
                         <td>
-                            <input id="interface-averaging-time-calib" type="number" step="0.1">
+                            <input id="interface-averaging-time-calib" type="number" step="0.1" min="0.1">
                         </td>
                     </tr>
+                    <tr>
+                        <td>
+                            <label for="interface-averaging-time-tacho-v">Tacho Averaging Time V[s]</label>
+                        </td>
+                        <td>
+                            <input id="interface-averaging-time-tacho-v" type="number" step="0.1" min="0.1">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="interface-averaging-time-tacho-t">Tacho Averaging Time T[s]</label>
+                        </td>
+                        <td>
+                            <input id="interface-averaging-time-tacho-t" type="number" step="0.1" min="0.1">
+                        </td>
+                    </tr>
+
                     <tr>
                         <td>
                             <label for="interface-max-value-hold-on-time">Max Value Hold on Time[s]</label>
@@ -1667,6 +1698,14 @@
                         </td>
                         <td>
                             <input id="interface-bms-auto-read-config-calib" type="checkbox">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="interface-wakelock-checkbox">Enable Interface Wakelock</label>
+                        </td>
+                        <td>
+                            <input id="interface-wakelock-checkbox" type="checkbox">
                         </td>
                     </tr>
                 </table>
@@ -1781,6 +1820,7 @@
 <script src="js/helpers/configcalib_processing.js"></script>
 <script src="js/helpers/zoom.js"></script>
 <script src="js/helpers/fileaccess.js"></script>
+<script src="js/helpers/wakelock.js"></script>
 
 
 <script src="js/tilebar.js"></script>
