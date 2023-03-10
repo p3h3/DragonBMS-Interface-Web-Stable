@@ -877,7 +877,7 @@
                         <option value="li-po">Li-Po</option>              <!-- umin 2.8v umax 4.2v -->
                         <option value="li-fe-po">LiFePo</option>          <!-- umin 2.5v umax 3.5v -->
                         <option value="custom-li" selected>Custom Lithium</option> <!-- umin and umax choosable -->
-                        <option value="custom" disabled>Completely Custom</option> <!-- no cell number -->
+                        <option id="fully-custom-chemistry-option" value="custom">Completely Custom</option> <!-- no cell number -->
                     </select></td>
                 </tr>
 
@@ -1132,6 +1132,14 @@
                 </tr>
 
             </table>
+
+            <div class="readwrite-local-button-container">
+                <p id="last-local-config-text">Last backup:</p>
+                <button id="board-config-read-in-localStorage">Load BMS backup</button>
+                <button id="board-config-write-to-localStorage">Backup BMS settings</button>
+            </div>
+
+
         </div>
 
 
@@ -1836,6 +1844,7 @@
 <script src="js/settings/inline-config.js"></script>
 <script src="js/settings/board-calib.js"></script>
 <script src="js/settings/virtualkeyboard.js"></script>
+<script src="js/settings/export_import.js"></script>
 
 <script src="js/dataProcessing/bms_gathering.js"></script>
 <script src="js/dataProcessing/inline_gathering.js"></script>
