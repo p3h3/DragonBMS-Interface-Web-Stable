@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 
-<html lang="en"><head>
-    <meta charset="UTF-8">
+<html lang="en">
+<head>
+    <meta charset="utf-8">
     <!--meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'"-->
 
     <!-- maybe not good but makes the mobile zoom work and disables input zoom in on mobile -->
@@ -233,6 +234,33 @@
 
 
             <td class="main-table-td-2row board-element">
+                <div class="gauge-div flex-center" id="switchOnTd">
+                    <div class="text-align-center" id="turnOnButton">
+                        <h2>Switch ON</h2>
+                    </div>
+                </div>
+            </td>
+
+
+
+
+
+
+        </tr>
+
+        <tr>
+
+
+
+
+
+
+
+
+
+
+
+            <td class="main-table-td-2row board-element">
                 <div class="gauge-div">
 
                     <table class="table-4fields">
@@ -240,7 +268,7 @@
                             <td>
                                 <div>
                                     <div>
-                                        <h5 class="bms-precharge-temp-label">BMS<br>Temperature:</h5>
+                                        <h5 class="bms-precharge-temp-label">BMS<br>Temp:</h5>
                                         <h3 class="bms-precharge-temp-value">°C</h3>
                                     </div>
                                 </div>
@@ -248,7 +276,7 @@
                             <td>
                                 <div>
                                     <div>
-                                        <h5>BMS<br>Temperature:</h5>
+                                        <h5>BMS Temp:</h5>
                                         <h3 class="bms-shunt-temp-value">°C</h3>
                                     </div>
                                 </div>
@@ -256,7 +284,7 @@
                             <td>
                                 <div>
                                     <div>
-                                        <h5>Motor<br>Temperature:</h5>
+                                        <h5>Motor Temp:</h5>
                                         <h3 class="tacho-motor-temp-value">°C</h3>
                                     </div>
                                 </div>
@@ -264,7 +292,7 @@
                             <td>
                                 <div>
                                     <div>
-                                        <h5>T-Extern<br>Temperature:</h5>
+                                        <h5>T-Extern Temp:</h5>
                                         <h3 class="tacho-extern-temp-value">°C</h3>
                                     </div>
                                 </div>
@@ -335,111 +363,49 @@
             </td>
 
 
-
-
-
-
-        </tr>
-
-        <tr>
-
-
-
-
-
-
-
-
-
-
-
-
             <td class="main-table-td-2row board-element">
-                <div class="gauge-div" id="channel-info-template">
-                    <table class="table-3-channel-controls">
-                        <tr>
-                            <td id="channel-info-1">
-                                <div>
-                                    <h4>Battery 1</h4>
-                                    <h5>Voltage:</h5>
-                                    <h3 class="bms-ch1-voltage-value">0V</h3>
-
-
-                                    <h5>Current:</h5>
-                                    <h3 class="bms-ch1-current-value">0A</h3>
-
-                                    <h5>Power:</h5>
-                                    <h3 class="bms-ch1-power-value">0W</h3>
-
-                                    <h5>State of Charge:</h5>
-                                    <h3 class="bms-ch1-soc-value">0%</h3>
-
-                                    <h5>Type:</h5>
-                                    <h3 class="bms-ch1-type-value">0S Li-Ion</h3>
-
-                                    <h5>Used Energy:</h5>
-                                    <h3 class="bms-ch1-energy-used-value">0Wh</h3>
-                                </div>
-                            </td>
-                            <td id="channel-info-2">
-                                <div>
-                                    <h4>Battery 2</h4>
-                                    <h5>Voltage:</h5>
-                                    <h3 class="bms-ch2-voltage-value">0V</h3>
-
-                                    <h5>Current:</h5>
-                                    <h3 class="bms-ch2-current-value">0A</h3>
-
-                                    <h5>Power:</h5>
-                                    <h3 class="bms-ch2-power-value">0W</h3>
-
-                                    <h5>State of Charge:</h5>
-                                    <h3 class="bms-ch2-soc-value">0%</h3>
-
-                                    <h5>Type:</h5>
-                                    <h3 class="bms-ch2-type-value">0S Li-Ion</h3>
-
-                                    <h5 >Used Energy:</h5>
-                                    <h3 class="bms-ch2-energy-used-value">0Wh</h3>
-                                </div>
-                            </td>
-                            <td id="channel-info-3">
-                                <div>
-                                    <h4>Battery 3</h4>
-                                    <h5>Voltage:</h5>
-                                    <h3 class="bms-ch3-voltage-value">0V</h3>
-
-                                    <h5>Current:</h5>
-                                    <h3 class="bms-ch3-current-value">0A</h3>
-
-                                    <h5>Power:</h5>
-                                    <h3 class="bms-ch3-power-value">0W</h3>
-
-                                    <h5>State of Charge:</h5>
-                                    <h3 class="bms-ch3-soc-value">0%</h3>
-
-                                    <h5>Type:</h5>
-                                    <h3 class="bms-ch3-type-value">0S Li-Ion</h3>
-
-                                    <h5>Used Energy:</h5>
-                                    <h3 class="bms-ch3-energy-used-value">0Wh</h3>
-                                </div>
-                            </td>
-                        </tr>
-                    </table>
-
-                </div>
-
-            </td>
-
-
-            <td class="main-table-td-2row board-element">
-                <div class="gauge-div flex-center" id="switchOnTd">
-                    <div class="text-align-center" id="turnOnButton">
-                        <h2>Switch ON</h2>
+                <div class="gauge-div">
+                    <div class="left-right-text-container">
+                        <h4 class="float-left">BMS State:</h4>
+                        <h6 class="float-right bms-state-value">off</h6>
+                    </div>
+                    <div class="left-right-text-container">
+                        <h4 class="float-left">Faults:</h4>
+                        <div class="float-right marquee">
+                            <div>
+                                <h6 class="bms-fault-state-value" id="fault-state">
+                                    None
+                                </h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="left-right-text-container">
+                        <h4 class="float-left">Mode:</h4>
+                        <h6 class="float-right bms-config-startup-value">Autostart</h6>
+                    </div>
+                    <div class="left-right-text-container">
+                        <h4 class="float-left">Over current discharge:</h4>
+                        <h6 class="float-right bms-config-over-current-value">0</h6>
+                    </div>
+                    <div class="left-right-text-container">
+                        <h4 class="float-left">Over voltage:</h4>
+                        <h6 class="float-right bms-config-over-voltage-value">0</h6>
+                    </div>
+                    <div class="left-right-text-container">
+                        <h4 class="float-left">Under voltage:</h4>
+                        <h6 class="float-right bms-config-under-voltage-value">0</h6>
+                    </div>
+                    <div class="left-right-text-container">
+                        <h4 class="float-left">Over current charge:</h4>
+                        <h6 class="float-right bms-config-under-current-value">0</h6>
+                    </div>
+                    <div class="left-right-text-container">
+                        <h4 class="float-left">Over temperature:</h4>
+                        <h6 class="float-right bms-config-over-temp-value">0</h6>
                     </div>
                 </div>
             </td>
+
 
 
 
@@ -596,48 +562,83 @@
 
 
 
-            <td class="main-table-td-2row board-element">
-                <div class="gauge-div">
-                    <div class="left-right-text-container">
-                        <h4 class="float-left">BMS State:</h4>
-                        <h6 class="float-right bms-state-value">off</h6>
-                    </div>
-                    <div class="left-right-text-container">
-                        <h4 class="float-left">Faults:</h4>
-                        <div class="float-right marquee">
+        <td class="main-table-td-2row board-element">
+            <div class="gauge-div" id="channel-info-template">
+                <table class="table-3-channel-controls">
+                    <tr>
+                        <td id="channel-info-1">
                             <div>
-                                <h6 class="bms-fault-state-value" id="fault-state">
-                                    None
-                                </h6>
+                                <h4>Battery 1</h4>
+                                <h5>Voltage:</h5>
+                                <h3 class="bms-ch1-voltage-value">0V</h3>
+
+
+                                <h5>Current:</h5>
+                                <h3 class="bms-ch1-current-value">0A</h3>
+
+                                <h5>Power:</h5>
+                                <h3 class="bms-ch1-power-value">0W</h3>
+
+                                <h5>State of Charge:</h5>
+                                <h3 class="bms-ch1-soc-value">0%</h3>
+
+                                <h5>Type:</h5>
+                                <h3 class="bms-ch1-type-value">0S Li-Ion</h3>
+
+                                <h5>Used Energy:</h5>
+                                <h3 class="bms-ch1-energy-used-value">0Wh</h3>
                             </div>
-                        </div>
-                    </div>
-                    <div class="left-right-text-container">
-                        <h4 class="float-left">Mode:</h4>
-                        <h6 class="float-right bms-config-startup-value">Autostart</h6>
-                    </div>
-                    <div class="left-right-text-container">
-                        <h4 class="float-left">Over current discharge:</h4>
-                        <h6 class="float-right bms-config-over-current-value">0</h6>
-                    </div>
-                    <div class="left-right-text-container">
-                        <h4 class="float-left">Over voltage:</h4>
-                        <h6 class="float-right bms-config-over-voltage-value">0</h6>
-                    </div>
-                    <div class="left-right-text-container">
-                        <h4 class="float-left">Under voltage:</h4>
-                        <h6 class="float-right bms-config-under-voltage-value">0</h6>
-                    </div>
-                    <div class="left-right-text-container">
-                        <h4 class="float-left">Over current charge:</h4>
-                        <h6 class="float-right bms-config-under-current-value">0</h6>
-                    </div>
-                    <div class="left-right-text-container">
-                        <h4 class="float-left">Over temperature:</h4>
-                        <h6 class="float-right bms-config-over-temp-value">0</h6>
-                    </div>
-                </div>
-            </td></tr>
+                        </td>
+                        <td id="channel-info-2">
+                            <div>
+                                <h4>Battery 2</h4>
+                                <h5>Voltage:</h5>
+                                <h3 class="bms-ch2-voltage-value">0V</h3>
+
+                                <h5>Current:</h5>
+                                <h3 class="bms-ch2-current-value">0A</h3>
+
+                                <h5>Power:</h5>
+                                <h3 class="bms-ch2-power-value">0W</h3>
+
+                                <h5>State of Charge:</h5>
+                                <h3 class="bms-ch2-soc-value">0%</h3>
+
+                                <h5>Type:</h5>
+                                <h3 class="bms-ch2-type-value">0S Li-Ion</h3>
+
+                                <h5 >Used Energy:</h5>
+                                <h3 class="bms-ch2-energy-used-value">0Wh</h3>
+                            </div>
+                        </td>
+                        <td id="channel-info-3">
+                            <div>
+                                <h4>Battery 3</h4>
+                                <h5>Voltage:</h5>
+                                <h3 class="bms-ch3-voltage-value">0V</h3>
+
+                                <h5>Current:</h5>
+                                <h3 class="bms-ch3-current-value">0A</h3>
+
+                                <h5>Power:</h5>
+                                <h3 class="bms-ch3-power-value">0W</h3>
+
+                                <h5>State of Charge:</h5>
+                                <h3 class="bms-ch3-soc-value">0%</h3>
+
+                                <h5>Type:</h5>
+                                <h3 class="bms-ch3-type-value">0S Li-Ion</h3>
+
+                                <h5>Used Energy:</h5>
+                                <h3 class="bms-ch3-energy-used-value">0Wh</h3>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+
+            </div>
+
+        </td>
 
 
 
@@ -1308,280 +1309,274 @@
                 </tr>
             </table>
         </div>
+    </div>
 
 
+    <div id="board-calibration-div" class="hidden">
 
+        <h2>Calibration values:</h2>
+        <h4 id="calib-write-warning" class="warning">Warning - might not be editable. Turn off first!</h4>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        <div id="board-calibration-div">
-
-            <h2>Calibration values:</h2>
-            <h4 id="calib-write-warning" class="warning">Warning - might not be editable. Turn off first!</h4>
-
-            <div class="readwrite-button-container">
-                <button id="board-calib-read">Read</button>
-                <button id="board-calib-write">Write</button>
-                <button id="board-turnonoff-calib">Turn OFF</button>
-            </div>
-
-            <table id="board-calibration-table">
-                <tr class="separator">
-                    <td>
-                        Input Voltage Correction Factor Strand 1
-                    </td>
-                    <td>
-
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <label for="in-volt1-target">Target Value:</label>
-                        <br>
-                        <input id="in-volt1-target" type="number"></td>
-                    <td>
-                        Actual Value:
-                        <br>
-                        <a id="in-volt1-actual">hi</a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <label for="in-volt1-correction">Set Value:</label>
-                        <br>
-                        <input id="in-volt1-correction" type="number">
-                    </td>
-                    <td>
-                        <button id="calculateInV1">Calculate</button>
-                    </td>
-                </tr>
-
-
-
-                <tr class="separator">
-                    <td>
-                        Input Voltage Correction Factor Strand 2
-                    </td>
-                    <td>
-
-                    </td>
-                </tr>
-                <tr>
-
-                </tr>
-                <tr>
-                    <td>
-                        <label for="in-volt2-target">Target Value:</label>
-                        <br>
-                        <input id="in-volt2-target" type="number">
-                    </td>
-                    <td>
-                        Actual Value:
-                        <br>
-                        <a id="in-volt2-actual">hi</a>
-                    </td>
-                </tr>
-                <tr>
-
-                    <td>
-                        <label for="in-volt2-correction">Set value:</label>
-                        <br>
-                        <input id="in-volt2-correction" type="number">
-                    </td>
-                    <td>
-                        <button id="calculateInV2">Calculate</button>
-                    </td>
-                </tr>
-
-
-
-                <tr class="separator">
-                    <td>
-                        Input Voltage Correction Factor Strand 3
-                    </td>
-                    <td>
-
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>
-                        <label for="in-volt3-target">Target Value:</label>
-                        <br>
-                        <input id="in-volt3-target" type="number">
-                    </td>
-                    <td>
-                        Actual Value:
-                        <br>
-                        <a id="in-volt3-actual">hi</a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <label for="in-volt3-correction">Set Value:</label>
-                        <br>
-                        <input id="in-volt3-correction" type="number">
-                    </td>
-                    <td>
-                        <button id="calculateInV3">Calculate</button>
-                    </td>
-                </tr>
-
-
-
-                <tr class="separator">
-                    <td>
-                        Output Voltage Correction Factor:
-                    </td>
-                    <td>
-
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <label for="out-volt-target">Target Value:</label>
-                        <br>
-                        <input id="out-volt-target" type="number"></td>
-                    <td>
-                        Actual Value:
-                        <br>
-                        <a id="out-volt-actual">hi</a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <label for="out-volt-correction">Set value:</label>
-                        <br>
-                        <input id="out-volt-correction" type="number">
-                    </td>
-                    <td>
-                        <button id="calculateOut">Calculate</button>
-                    </td>
-                </tr>
-
-
-
-                <tr class="separator">
-                    <td>
-                        Shunt Resistance Strand 1 [uR]:
-                    </td>
-                    <td>
-
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <label for="shunt-resistance-1-target">Target Value:</label>
-                        <br>
-                        <input id="shunt-resistance-1-target" type="number">
-                    </td>
-                    <td>
-                        Actual Value:
-                        <br>
-                        <a id="shunt-resistance-1-actual"></a>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>
-                        <label for="shunt-resistance-1">Set value:</label>
-                        <br>
-                        <input id="shunt-resistance-1" type="number">
-                    </td>
-
-                    <td>
-                        <button id="calculateShunt1">Calculate</button>
-                    </td>
-                </tr>
-
-
-
-
-                <tr class="separator">
-                    <td>
-                        Shunt Resistance Strand 2 [uR]:
-                    </td>
-                    <td>
-
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <label for="shunt-resistance-2-target">Target Value:</label>
-                        <br>
-                        <input id="shunt-resistance-2-target" type="number">
-                    </td>
-                    <td>
-                        Actual Value:
-                        <br>
-                        <a id="shunt-resistance-2-actual"></a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <label for="shunt-resistance-2">Set value:</label>
-                        <br>
-                        <input id="shunt-resistance-2" type="number">
-                    </td>
-                    <td>
-                        <button id="calculateShunt2">Calculate</button>
-                    </td>
-                </tr>
-
-
-
-                <tr class="separator">
-                    <td>
-                        Shunt Resistance Strand 3 [uR]:
-                    </td>
-                    <td>
-
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <label for="shunt-resistance-3-target">Target Value:</label>
-                        <br>
-                        <input id="shunt-resistance-3-target" type="number">
-                    </td>
-                    <td>
-                        Actual Value:
-                        <br>
-                        <a id="shunt-resistance-3-actual">hi</a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <label for="shunt-resistance-3">Set value:</label>
-                        <br>
-                        <input id="shunt-resistance-3" type="number">
-                    </td>
-                    <td>
-                        <button id="calculateShunt3">Calculate</button>
-                    </td>
-                </tr>
-            </table>
+        <div class="readwrite-button-container">
+            <button id="board-calib-read">Read</button>
+            <button id="board-calib-write">Write</button>
+            <button id="board-turnonoff-calib">Turn OFF</button>
         </div>
 
+        <div class="read-calib-backup-container">
+            <select name="calib-backup-device" id="calib-backup-device-select">
+            </select>
+            <select name="calib-backup" id="calib-backup-select">
+            </select>
+            <button id="board-calib-backup-read">Load Calib Backup</button>
+        </div>
+
+        <table id="board-calibration-table">
+            <tr class="separator">
+                <td>
+                    Input Voltage Correction Factor Strand 1
+                </td>
+                <td>
+
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="in-volt1-target">Target Value:</label>
+                    <br>
+                    <input id="in-volt1-target" type="number"></td>
+                <td>
+                    Actual Value:
+                    <br>
+                    <a id="in-volt1-actual">hi</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="in-volt1-correction">Set Value:</label>
+                    <br>
+                    <input id="in-volt1-correction" type="number">
+                </td>
+                <td>
+                    <button id="calculateInV1">Calculate</button>
+                </td>
+            </tr>
+
+
+
+            <tr class="separator">
+                <td>
+                    Input Voltage Correction Factor Strand 2
+                </td>
+                <td>
+
+                </td>
+            </tr>
+            <tr>
+
+            </tr>
+            <tr>
+                <td>
+                    <label for="in-volt2-target">Target Value:</label>
+                    <br>
+                    <input id="in-volt2-target" type="number">
+                </td>
+                <td>
+                    Actual Value:
+                    <br>
+                    <a id="in-volt2-actual">hi</a>
+                </td>
+            </tr>
+            <tr>
+
+                <td>
+                    <label for="in-volt2-correction">Set value:</label>
+                    <br>
+                    <input id="in-volt2-correction" type="number">
+                </td>
+                <td>
+                    <button id="calculateInV2">Calculate</button>
+                </td>
+            </tr>
+
+
+
+            <tr class="separator">
+                <td>
+                    Input Voltage Correction Factor Strand 3
+                </td>
+                <td>
+
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <label for="in-volt3-target">Target Value:</label>
+                    <br>
+                    <input id="in-volt3-target" type="number">
+                </td>
+                <td>
+                    Actual Value:
+                    <br>
+                    <a id="in-volt3-actual">hi</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="in-volt3-correction">Set Value:</label>
+                    <br>
+                    <input id="in-volt3-correction" type="number">
+                </td>
+                <td>
+                    <button id="calculateInV3">Calculate</button>
+                </td>
+            </tr>
+
+
+
+            <tr class="separator">
+                <td>
+                    Output Voltage Correction Factor:
+                </td>
+                <td>
+
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="out-volt-target">Target Value:</label>
+                    <br>
+                    <input id="out-volt-target" type="number"></td>
+                <td>
+                    Actual Value:
+                    <br>
+                    <a id="out-volt-actual">hi</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="out-volt-correction">Set value:</label>
+                    <br>
+                    <input id="out-volt-correction" type="number">
+                </td>
+                <td>
+                    <button id="calculateOut">Calculate</button>
+                </td>
+            </tr>
+
+
+
+            <tr class="separator">
+                <td>
+                    Shunt Resistance Strand 1 [uR]:
+                </td>
+                <td>
+
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="shunt-resistance-1-target">Target Value:</label>
+                    <br>
+                    <input id="shunt-resistance-1-target" type="number">
+                </td>
+                <td>
+                    Actual Value:
+                    <br>
+                    <a id="shunt-resistance-1-actual"></a>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <label for="shunt-resistance-1">Set value:</label>
+                    <br>
+                    <input id="shunt-resistance-1" type="number">
+                </td>
+
+                <td>
+                    <button id="calculateShunt1">Calculate</button>
+                </td>
+            </tr>
+
+
+
+
+            <tr class="separator">
+                <td>
+                    Shunt Resistance Strand 2 [uR]:
+                </td>
+                <td>
+
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="shunt-resistance-2-target">Target Value:</label>
+                    <br>
+                    <input id="shunt-resistance-2-target" type="number">
+                </td>
+                <td>
+                    Actual Value:
+                    <br>
+                    <a id="shunt-resistance-2-actual"></a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="shunt-resistance-2">Set value:</label>
+                    <br>
+                    <input id="shunt-resistance-2" type="number">
+                </td>
+                <td>
+                    <button id="calculateShunt2">Calculate</button>
+                </td>
+            </tr>
+
+
+
+            <tr class="separator">
+                <td>
+                    Shunt Resistance Strand 3 [uR]:
+                </td>
+                <td>
+
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="shunt-resistance-3-target">Target Value:</label>
+                    <br>
+                    <input id="shunt-resistance-3-target" type="number">
+                </td>
+                <td>
+                    Actual Value:
+                    <br>
+                    <a id="shunt-resistance-3-actual">hi</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="shunt-resistance-3">Set value:</label>
+                    <br>
+                    <input id="shunt-resistance-3" type="number">
+                </td>
+                <td>
+                    <button id="calculateShunt3">Calculate</button>
+                </td>
+            </tr>
+        </table>
+
+
+        <div class="readwrite-local-button-container">
+            <button id="board-calib-open-json">Open Calib JSON</button>
+            <button id="board-calib-save-json">Save Calib as JSON</button>
+            <button id="board-config-open-json">Open Config JSON</button>
+            <button id="board-config-save-json">Save Config as JSON</button>
+        </div>
     </div>
+
 
 
 
@@ -1714,6 +1709,24 @@
                         </td>
                         <td>
                             <input id="interface-wakelock-checkbox" type="checkbox">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="interface-show-temp-bms-ext">Enable Temperatures:</label>
+                        </td>
+                        <td>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="interface-wakelock-checkbox">BMS-Ext, BMS-Int, Motor, Tacho-Ext</label>
+                        </td>
+                        <td>
+                            <input id="interface-show-temp-bms-ext" type="checkbox">
+                            <input id="interface-show-temp-bms" type="checkbox">
+                            <input id="interface-show-temp-motor" type="checkbox">
+                            <input id="interface-show-temp-tacho-ext" type="checkbox">
                         </td>
                     </tr>
                 </table>
