@@ -1,1 +1,1 @@
-Readme for dev deployment
+Readme for stable deployment

@@ -301,6 +301,27 @@ for the "connect last inline" overlay button
 }
 
 
+
+/*
+for the ota update overlay
+(to make it almost im possible for the user to fuck up ota)
+ */
+#otaUpdateOverlay{
+    text-align: center;
+
+
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+
+    z-index: 10;
+}
+
+
+
 /*
 for the "connect last BMS" overlay button
  */
@@ -456,4 +477,38 @@ Channel control button (inside the above mentioned table)
 
 #capture-mode-table td div.gauge-div{
     background-color: var(--capture-mode-background-color);
+}
+
+
+
+
+
+
+
+
+
+
+
+.device-info-device-chooser{
+    display:flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.device-info-device-chooser h2{
+    margin-right: 2.5%;
+    margin-left: 2.5%;
+    border: 3px solid var(--accent-color);
+    border-radius: 7px;
+    padding-left: 0.5%;
+    padding-right: 2%;
+}
+
+.device-info-device-chooser h2:hover{
+    opacity: 0.75;
+}
+
+.device-info-device-not-chosen{
+    opacity: 0.5;
 }

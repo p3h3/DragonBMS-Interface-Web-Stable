@@ -24,6 +24,11 @@
     <link rel="stylesheet" href="css/tables.css">
     <link rel="stylesheet" href="css/dynamic-style.css">
 
+
+    <link rel="stylesheet" href="css/vehicle-model.css">
+
+    <link rel="stylesheet" href="css/data-distribution.css">
+
     <link rel="icon" type="image/x-icon" href="img/icon/512x512.png">
 
 
@@ -42,7 +47,7 @@
 
 
 
-    <!-- COOL, this is a progressive web app now -->
+    <!-- COOL, this is a progressive web application now -->
     <link rel="manifest" href="app.webmanifest" />
 </head>
 <body class="disableSwipeDown">
@@ -57,19 +62,29 @@
                 <p id="tileBarConnectTacho">Connect Tacho</p>
                 <br>
                 <p id="tileBarDisconnect">Disconnect All Devices</p>
+                <div id="tileBarDataFileManagerContainer" class="display-none">
+                    <br>
+                    <p id="tileBarFileManager">File Manager</p>
+                </div>
             </div>
         </div>
         <div class="dropdown">
             <span>Settings</span>
             <div class="dropdown-content">
-                <a id="tileBarBoardInfo">Board Info</a>
+                <a id="tileBarDeviceInfo">Device Info</a>
                 <br>
                 <a id="tileBarBoardConfig">BMS Configuration</a>
                 <br>
-                <a id="tileBarBoardCalib">BMS Calibration</a>
-                <br>
                 <a id="tileBarTachoConfig">Tacho Configuration</a>
-                <a id="settings-hide" class="hidden">
+                <div id="tileBarBMSCalibContainer" class="display-none">
+                    <br>
+                    <a id="tileBarBoardCalib">BMS Calibration</a>
+                </div>
+                <div id="tileBarDataDistributionContainer" class="display-none">
+                    <br>
+                    <a id="tileBarDataDistribution">Data Distribution</a>
+                </div>
+                <a id="settings-hide" class="display-none">
                     <br>
                     Close this Window
                 </a>
@@ -90,13 +105,15 @@
         <div class="dropdown">
             <span id="tilebar-interface-dropdown">Interface</span>
             <div class="dropdown-content">
-                <a id="tileBarAbout">Settings</a>
+                <a id="tileBar-about">Settings</a>
                 <br>
-                <a id="tileBarDarkmode">Switch Style</a>
+                <a id="tileBar-colormode">Switch Style</a>
                 <br>
                 <a id="tilebar-edit">Edit Tiles</a>
                 <br>
                 <a id="tilebar-capture-mode">Film Video</a>
+                <br>
+                <a id="tilebar-interface-mode">Mode</a>
             </div>
         </div>
 
@@ -117,7 +134,6 @@
 
 </div>
 
-
 <div id="nothingConnectedOverlay" class="">
     <div id="autoConnectContainer">
 
@@ -134,6 +150,18 @@
         </div>
     </div>
 </div>
+
+
+<div id="otaUpdateOverlay" class="visibility-hidden">
+    <div id="otaUpdateOverlayContainer">
+            <h2 class="ota-update-text">Performing<br>
+                Update...</h2>
+    </div>
+</div>
+
+
+
+
 
 <div id="zoom-content">
 
@@ -532,11 +560,6 @@
                         </tr>
                     </table>
 
-
-
-
-
-
                 </div>
             </td>
 
@@ -651,58 +674,6 @@
 
 
         <tr>
-            <td class="main-table-td-2row board-element" id="can-tx-gauge" class="can-bridge-element disabled">
-                <!--div-- class="gauge-div">
-
-                    <table class="table-4fields">
-                        <tr>
-                            <td><label for="can-tx-extended-id-checkbox">Extended ID:</label></td>
-                            <td><input type="checkbox" id="can-tx-extended-id-checkbox"></td>
-                        </tr>
-                        <tr>
-                            <td><label for="can-tx-id">ID (hex):</label></td>
-                            <td><input type="number" id="can-tx-id" value="0"></td>
-                        </tr>
-                        <tr>
-                            <td><label for="can-tx-data0">D0:</label></td>
-                            <td><input type="checkbox" id="can-tx-data0" value="-1"></td>
-                        </tr>
-                        <tr>
-                            <td><label for="can-tx-data1">D1:</label></td>
-                            <td><input type="number" id="can-tx-data1" value="-1"></td>
-                        </tr>
-                        <tr>
-                            <td><label for="can-tx-data2">D2:</label></td>
-                            <td><input type="number" id="can-tx-data2" value="-1"></td>
-                        </tr>
-                        <tr>
-                            <td><label for="can-tx-data3">D3:</label></td>
-                            <td><input type="number" id="can-tx-data3" value="-1"></td>
-                        </tr>
-                        <tr>
-                            <td><label for="can-tx-data4">D4:</label></td>
-                            <td><input type="number" id="can-tx-data4" value="-1"></td>
-                        </tr>
-                        <tr>
-                            <td><label for="can-tx-data5">D5:</label></td>
-                            <td><input type="number" id="can-tx-data5" value="-1"></td>
-                        </tr>
-                        <tr>
-                            <td><label for="can-tx-data6">D6:</label></td>
-                            <td><input type="number" id="can-tx-data6" value="-1"></td>
-                        </tr>
-                        <tr>
-                            <td><label for="can-tx-data7">D7:</label></td>
-                            <td><input type="number" id="can-tx-data7" value="-1"></td>
-                        </tr>
-                        <tr>
-                            <td><input type="button" id="can-tx-send-button">Send!</td>
-                        </tr>
-                    </table>
-                </div-->
-            </td>
-
-
 
             <!--
 
@@ -710,10 +681,51 @@
             for the rearrange logic to allow placing the dev field here
 
             -->
+            <td class="main-table-td-2row">
+            </td>
 
-            <td class="main-table-td-2row board-element"></td>
+
+            <td class="main-table-td-2row">
+            </td>
 
         </tr>
+
+
+
+        <tr class="dev-mode-tiles display-none">
+
+            <!--
+
+            they need to absolutely empty!
+            for the rearrange logic to allow placing the dev field here
+
+            -->
+            <td class="main-table-td-2row">
+            </td>
+
+
+            <td class="main-table-td-2row">
+            </td>
+
+        </tr>
+
+        <tr class="dev-mode-tiles display-none">
+
+            <!--
+
+            they need to absolutely empty!
+            for the rearrange logic to allow placing the dev field here
+
+            -->
+            <td class="main-table-td-2row">
+            </td>
+
+
+            <td class="main-table-td-2row">
+            </td>
+
+        </tr>
+
     </table>
 
 
@@ -838,19 +850,41 @@
 
 
 
-    <div id="board-info-container" class="hidden">
-        <h2>VoltaicBMS Interface</h2>
+    <div id="device-info-container" class="display-none">
 
-        <p>Model: <a class="bms-model-field"></a></p>
+        <h2>Device Info :</h2>
 
-        <p>Hardware Version: <a class="bms-hardware-version-field"></a></p>
+        <div class="device-info-device-chooser">
+            <!-- FRANZ NICHT UMBENENNEN, SONST GEHT OTA KAPUTT!!!!!!!! -->
+            <h2 class="device-info-device-not-chosen" value="bms">BMS</h2>
+            <!-- WIRKLICH NICHT! -->
+            <h2 class="device-info-device-not-chosen" value="tacho">Tacho</h2>
+        </div>
+        <h4>Model: <a class="bms-model-field"></a></h4>
+        <h4>Hardware Version: <a class="bms-hardware-version-field"></a></h4>
+        <h4>Firmware Version: <a class="bms-firmware-version-field"></a></h4>
+        <h4>Serial Number: <a class="bms-serial-number-field"></a></h4>
+        <h4 id="firmwareUpdateText" class="hidden"></h4>
 
-        <p>Firmware Version: <a class="bms-firmware-version-field"></a></p>
+        <br>
+        <br>
 
-        <a id="firmwareUpdateText" class="hidden"></a>
+        <h2>Voltaic OTA Update</h2>
 
-        <p>Serial Number: <a class="bms-serial-number-field"></a></p>
+        <br>
 
+        <h3>Available images :</h3>
+        <div id="available-ota-images-div">
+            <select id="available-ota-images">
+                <option>Choose firmware version</option>
+            </select>
+        </div>
+        <br>
+        <a id="otaUpdateInfoText" class="display-none"><br></a>
+        <br>
+        <div>
+            <button id="ota-update-button" type="submit" class="btn btn-info" disabled>Update Firmware</button>
+        </div>
 
         <div class="hide-setting-button">
             Close this Window
@@ -860,7 +894,7 @@
 
 
 
-        <div id="board-configuration-div" class="hidden">
+        <div id="board-configuration-div" class="display-none">
             <div class="frame">
                 <img class="logo" src="img/icon/512x512.png" alt="voltaic logo">
             </div>
@@ -896,7 +930,8 @@
                             <label>Enabled Inputs:ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ</label>
 
                             <div class="dropdown-content">
-                                Which Inputs should are enabled - only these Inputs have the protection features and will turn on
+                                Which Inputs are enabled -
+                                only these Inputs have the protection features and will turn on
                             </div>
                         </div>
                     </td>
@@ -953,11 +988,11 @@
                         <div class="dropdown">
                             <label for="battery-capacity">Battery capacity [mAh]:</label>
                             <div class="dropdown-content">
-                                The Capacity of your Battery pack in Ah (total battery, not just a single cell)
+                                The Capacity of your Battery pack in mAh (total battery, not just a single strand)
                             </div>
                         </div>
                     </td>
-                    <td><input id="battery-capacity" type="number" min="1"></td>
+                    <td><input id="battery-capacity" type="number" min="100" max="3200000"></td>
                 </tr>
 
                 <tr>
@@ -965,7 +1000,7 @@
                         <div class="dropdown">
                             <label for="max-cell-voltage">Max. cell voltage [mV]:</label>
                             <div class="dropdown-content">
-                                The cell voltage at which an over voltage protection event is fired.
+                                The cell voltage at which an over-voltage protection event is fired.
                             </div>
                         </div>
                     </td>
@@ -1046,7 +1081,7 @@
                             <label for="strand-max-imbalance-current">Current imbalance [A]:</label>
                             <div class="dropdown-content">
                                 The difference in current that can flow between the batteries which will trigger a protection event.
-                                With identical battery packs this current may be caused by different wire lengths or different stages of degradation inside the battery.
+                                With identical battery packs, this current may be caused by different wire lengths or different stages of degradation inside the battery.
                                 The difference of course applies to both charging and discharging and "idling"
                             </div>
                         </div>
@@ -1054,14 +1089,14 @@
                     <td><input id="strand-max-imbalance-current" type="number" min="1"></td>
                 </tr>
 
-                <tr class="hidden">
+                <tr class="display-none">
                     <td>
                         <div class="dropdown">
                             <label for="spike-sensitivity-select">Current Spike sensitivity:</label>
                             <div class="dropdown-content">
-                                The current spike sensitivity changes the instant over current (short) protection value. If this is set too high, a short may be detected too late or not at all.
+                                The current spike sensitivity changes the instant over current (short) protection value. If this is set too highly, a short may be detected too late or not at all.
                                 If you encounter short Faults under high loads at low speeds, your drivetrain may have a current spike problem, which means that the motor controller is seeking
-                                really high currents for short durations and is thereby potentially harming the battery. You can just turn down the sensitivity to avoid the faults, we would
+                                really high currents for short durations and is thereby potentially harming the battery. You can just turn down the sensitivity to avoid the faults; we would
                                 however advise you to look at other options of avoiding spikes (additional filter capacitors near the motor controller).
                             </div>
                         </div>
@@ -1094,10 +1129,10 @@
                     <td>
                         <div class="dropdown">
                             <label for="logic-max-temp">Extern max temp [°C]:</label>
-                            <!--div class="dropdown-content">
+                            <!--Div class="dropdown-content">
                                 The precharge transistor regulated the current needed to charge the output capacitance (motor controllers, etc.).
                                 Per physics, this transistor dissipates the same energy that the capacitors are charged with, which
-                                means, that it gets warm. This max temperature may be set from experience to catch unusually high
+                                means that it gets warm. This max temperature may be set from experience to catch unusually high
                                 output capacities or to prolong the life of the transistor. You can't break anything with this setting
                                 as there is a self-protection mechanism.
                             </div-->
@@ -1175,8 +1210,8 @@
                         <div class="dropdown">
                             <label>Update Count:</label>
                             <div class="dropdown-content">
-                                The number of times, the configuration has been updated. This mostly serves as a confirmation, that
-                                all of your changes have been correctly sent and read back - if you save the changes, this number
+                                The number of times, the configuration has been updated. This mostly serves as a confirmation that
+                                all of your changes have been correctly sent and read back— if you save the changes, this number
                                 should increase by 1.
                             </div>
                         </div>
@@ -1186,12 +1221,15 @@
 
             </table>
 
+            <!--
+            TEMPORARILY DISABLED FOR STABLE VERSION
+
             <div class="readwrite-local-button-container">
                 <p id="last-local-config-text">Last backup:</p>
                 <button id="board-config-read-in-localStorage">Load BMS backup</button>
                 <button id="board-config-write-to-localStorage">Backup BMS settings</button>
             </div>
-
+            -->
 
 
             <div class="hide-setting-button">
@@ -1223,7 +1261,7 @@
 
 
 
-        <div id="inline-configuration-div" class="hidden">
+        <div id="inline-configuration-div" class="display-none">
 
             <h2>Tacho Configuration:</h2>
 
@@ -1232,6 +1270,17 @@
                 <button id="inline-config-write">Write</button>
             </div>
             <table id="inline-configuration-table">
+                <tr>
+                    <td>
+                        <div class="dropdown">
+                            <label for="tacho-config-device-name">Tacho Name</label>
+                            <div class="dropdown-content">
+                                The Name displayed in the Bluetooth connection dialog.
+                            </div>
+                        </div>
+                    </td>
+                    <td><input id="tacho-config-device-name" type="text" class="tacho-name-field"></td>
+                </tr>
                 <tr>
                     <td>
                         <label for="ntc-type-select">Sensor Type:</label>
@@ -1263,7 +1312,7 @@
                 </tr>
                 <tr>
                     <td>
-                        <label for="r-value-divider">Internal 10K Pullup [Ohm] </label>
+                        <label for="r-value-divider">Internal 10K Pull-up [Ohm] </label>
                     </td>
                     <td>
                         <input id="r-value-divider" type="number" min="1">
@@ -1335,7 +1384,8 @@
                         <div>
                             Pulses: <span id="pulses"></span>
                             <div class="dropdown-content">
-                                Everytime your Hall sensor detect a Pulse, depending on rotation Direction it gets added or subtracted.
+                                Everytime your Hall sensors detect a pulse, depending on the direction of rotation,
+                                it gets added or subtracted.
                             </div>
                         </div>
                     </td>
@@ -1371,7 +1421,7 @@
         </div>
 
 
-    <div id="board-calibration-div" class="hidden">
+    <div id="board-calibration-div" class="display-none">
 
         <h2>Calibration values:</h2>
         <h4 id="calib-write-warning" class="warning">Settings can't be changed, please turn off first!</h4>
@@ -1645,15 +1695,97 @@
 
 
 
-    <div id="interface-settings-container" class="hidden">
+    <div id="data-distribution" class="display-none">
+        <div id="data-distribution-container">
+            <table id="data-distribution-mapping-table">
+                <tr>
+                    <th>
+                        <p>Output</p>
+                    </th>
+                    <th>
+                        <p>Input</p>
+                    </th>
+                </tr>
+            </table>
+
+            <table id="data-distribution-inputs-table">
+                <tr>
+                    <th>
+                        <p>Available Data</p>
+                    </th>
+                </tr>
+
+            </table>
+        </div>
+
+        <div class="hide-setting-button">
+            Close this Window
+        </div>
+    </div>
+
+
+
+
+    <div id="dbcFileManager" class="display-none">
+        <div id="dbc-file-manager-container">
+            <table id="dbc-file-manager-table">
+                <tr>
+                    <th>
+                        <p>File Name</p>
+                    </th>
+                    <th>
+                        <p>Size</p>
+                    </th>
+                    <th>
+                        <p>Actions</p>
+                    </th>
+                </tr>
+            </table>
+
+            <button id="dbc-file-manager-add-file">Add new File</button>
+        </div>
+
+        <div class="hide-setting-button">
+            Close this Window
+        </div>
+    </div>
+
+    <div id="pluginFileManager" class="display-none">
+        <div id="plugin-file-manager-container">
+            <table id="plugin-file-manager-table">
+                <tr>
+                    <th>
+                        <p>File Name</p>
+                    </th>
+                    <th>
+                        <p>Size</p>
+                    </th>
+                    <th>
+                        <p>Actions</p>
+                    </th>
+                </tr>
+            </table>
+
+            <button id="plugin-file-manager-add-file">Add new File</button>
+        </div>
+
+        <div class="hide-setting-button">
+            Close this Window
+        </div>
+    </div>
+
+
+
+
+    <div id="interface-settings-container" class="display-none">
         <img class="logo" src="img/icon/512x512.png" alt="voltaic logo">
         <h2>VoltaicBMS Interface</h2>
         <h3>Version:</h3>
         <p class="version-number-field"></p>
 
-        <div class="decription-container">
+        <div class="description-container">
             <p>
-                This App is for use with the VoltaicBMS and VoltaicTacho.
+                This Application is for use with the VoltaicBMS and VoltaicTacho.
             </p>
 
             <p>
@@ -1850,7 +1982,8 @@
             </div>
 
             <p>
-                As this is a progressive web app, you just need to restart while connected to the Internet for an Update.
+                As this is a progressive web application,
+                you just need to restart while connected to the Internet for an Update.
                 <br>
                 <br>
                 Please always restart again after every Update!
@@ -1858,12 +1991,13 @@
 
             <p>
                 Note: If you have any problems or want to make a suggestion, feel free to contact us!
-                You can reach us via: info@voltaic.de or WhatsApp / Phone : +49 170 5731608
+                You can reach us via: info@voltaic.de or WhatsApp / Phone: +49 170 5731608
             </p>
 
             <p>
                 If you want to contact the Lead Developer of this PWA or if you are interested in
-                development or discussing technical topics send me an E-Mail! : hi@p3h3.de
+                development or discussing technical topics e-mail me!
+                hi@p3h3.de
             </p>
 
 
@@ -2009,7 +2143,7 @@
 
 
 
-    <div id="keyboard-container" class="hidden">
+    <div id="keyboard-container" class="visibility-hidden">
         <div class="simple-keyboard"></div>
     </div>
 
@@ -2021,6 +2155,222 @@
         <a id="aDownloadFile" download></a>
 
 
+        <table>
+
+            <td class="main-table-td-2row" id="vehicle-model">
+                <div class="gauge-div">
+
+                    <div class="vehicle-model-container">
+                        <!-- SVG injection makes the tag style-able since it's an inline SVG object-->
+                        <img src="./img/gokart_wireframe.svg" class="vehicle-model-image"/>
+
+                    </div>
+
+                    <table class="vehicle-model-table">
+                        <!--
+                            for gokart only!!!!
+                         -->
+                        <tr class="visibility-hidden">
+                            <td>
+                                <input id="reverse-fl" type="checkbox">
+                            </td>
+                            <td>
+                                <div class="vehicle-model-torque">
+                                    <div class="vehicle-model-torque-positive vehicle-model-torque-fl"></div>
+                                    <div class="vehicle-model-torque-negative vehicle-model-torque-fl"></div>
+                                </div>
+                            </td>
+
+
+                            <!-- inverted order here because css spec is weird
+                            - float right elements are in inverse order -->
+                            <td>
+                                <input id="reverse-fr" type="checkbox">
+                            </td>
+                            <td>
+                                <div class="vehicle-model-torque">
+                                    <div class="vehicle-model-torque-positive vehicle-model-torque-fr"></div>
+                                    <div class="vehicle-model-torque-negative vehicle-model-torque-fr"></div>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <input id="reverse-rr" type="checkbox" class="visibility-hidden">
+                            </td>
+                            <td>
+                                <div class="vehicle-model-torque">
+                                    <div class="vehicle-model-torque-positive vehicle-model-torque-rr"></div>
+                                    <div class="vehicle-model-torque-negative vehicle-model-torque-rr"></div>
+                                </div>
+                            </td>
+
+                            <!-- inverted order here because css spec is weird
+                            - float right elements are in inverse order -->
+                            <td>
+                                <input id="reverse-rl" type="checkbox" class="visibility-hidden">
+                            </td>
+                            <td>
+                                <div class="vehicle-model-torque">
+                                    <div class="vehicle-model-torque-positive vehicle-model-torque-rl"></div>
+                                    <div class="vehicle-model-torque-negative vehicle-model-torque-rl"></div>
+                                </div>
+                            </td>
+                        </tr>
+
+                    </table>
+
+
+                </div>
+            </td>
+
+
+            <td class="main-table-td-2row" id="can-gauge">
+                <div class="gauge-div can-bridge-element">
+
+                    <table class="table-4fields">
+                        <tr>
+                            <td class="can-input-td"><label for="can-tx-extended-id-checkbox" class="can-input" >Extended ID:</label></td>
+                            <td class="can-input-td"><input type="checkbox" class="can-input" id="can-tx-extended-id-checkbox"></td>
+                        </tr>
+                        <tr>
+                            <td class="can-input-td"><label for="can-tx-id" class="can-input" >ID (dec):</label></td>
+                            <td class="can-input-td"><input type="number" class="can-input" id="can-tx-id" value="0"></td>
+                        </tr>
+                        <tr>
+                            <td class="can-input-td"><label for="can-tx-data0" class="can-input" >D0:</label></td>
+                            <td class="can-input-td"><input type="number" class="can-input" id="can-tx-data0" value="-1"></td>
+                        </tr>
+                        <tr>
+                            <td class="can-input-td"><label for="can-tx-data1" class="can-input" >D1:</label></td>
+                            <td class="can-input-td"><input type="number" class="can-input" id="can-tx-data1" value="-1"></td>
+                        </tr>
+                        <!--
+                        <tr>
+                            <td class="can-input-td"><label for="can-tx-data2" class="can-input" >D2:</label></td>
+                            <td class="can-input-td"><input type="number" class="can-input" id="can-tx-data2" value="-1"></td>
+                        </tr>
+                        <tr>
+                            <td class="can-input-td"><label for="can-tx-data3" class="can-input" >D3:</label></td>
+                            <td class="can-input-td"><input type="number" class="can-input" id="can-tx-data3" value="-1"></td>
+                        </tr>
+
+                        <tr>
+                            <td class="can-input-td"><label for="can-tx-data4" class="can-input" >D4:</label></td>
+                            <td class="can-input-td"><input type="number" class="can-input" id="can-tx-data4" value="-1"></td>
+                        </tr>
+                        <tr>
+                            <td class="can-input-td"><label for="can-tx-data5" class="can-input" >D5:</label></td>
+                            <td class="can-input-td"><input type="number" class="can-input" id="can-tx-data5" value="-1"></td>
+                        </tr>
+
+                        <tr>
+                            <td class="can-input-td"><label for="can-tx-data6" class="can-input" >D6:</label></td>
+                            <td class="can-input-td"><input type="number" class="can-input" id="can-tx-data6" value="-1"></td>
+                        </tr>
+                        <tr>
+                            <td class="can-input-td"><label for="can-tx-data7" class="can-input" >D7:</label></td>
+                            <td class="can-input-td"><input type="number" class="can-input" id="can-tx-data7" value="-1"></td>
+                        </tr>
+                        -->
+                        <tr>
+                            <td class="can-input-td"><label for="can-tx-send-button" class="can-input" >Send!</label></td>
+                            <td class="can-input-td"><input type="button" class="can-input" id="can-tx-send-button"></td>
+                        </tr>
+
+                        <tr>
+                            <td class="can-input-td"><label for="can-rx-extended-id-checkbox" class="can-input" >Extended ID:</label></td>
+                            <td class="can-input-td"><input type="checkbox" class="can-input" id="can-rx-extended-id-checkbox"></td>
+                        </tr>
+                        <tr>
+                            <td class="can-input-td"><label for="can-rx-id" class="can-input" >ID (dec):</label></td>
+                            <td class="can-input-td"><input type="number" class="can-input" id="can-rx-id" value="0"></td>
+                        </tr>
+                        <tr>
+                            <td class="can-input-td"><label for="can-rx-send-button" class="can-input" >Send!</label></td>
+                            <td class="can-input-td"><input type="button" class="can-input" id="can-rx-send-button"></td>
+                        </tr>
+                    </table>
+
+
+                    <p id="can-rx-pfusch-box">
+
+                </div>
+            </td>
+
+
+            <td class="main-table-td-2row" id="tacho-temp-settings-gauge">
+                <div class="gauge-div">
+
+                    <table class="table-4fields">
+                        <tr>
+                            <td class="tacho-temp-td"><label for="tacho-motor-temp-c" class="can-input" >Motor Cutoff:</label></td>
+                            <td class="tacho-temp-td"><input type="number" class="can-input" id="tacho-motor-temp-c" min="0" value="-1"></td>
+                        </tr>
+                        <tr>
+                            <td class="tacho-temp-td"><label for="tacho-motor-temp-l1" class="can-input" >Motor Limp 1:</label></td>
+                            <td class="tacho-temp-td"><input type="number" class="can-input" id="tacho-motor-temp-l1" min="0" value="-1"></td>
+                        </tr>
+                        <tr>
+                            <td class="tacho-temp-td"><label for="tacho-motor-temp-l2" class="can-input" >Motor Limp 2:</label></td>
+                            <td class="tacho-temp-td"><input type="number" class="can-input" id="tacho-motor-temp-l2" min="0" value="-1"></td>
+                        </tr>
+
+                        <tr>
+                            <td class="tacho-temp-td"><label for="tacho-controller-temp-c" class="can-input" >controller Cutoff:</label></td>
+                            <td class="tacho-temp-td"><input type="number" class="can-input" id="tacho-controller-temp-c" min="0" value="-1"></td>
+                        </tr>
+                        <tr>
+                            <td class="tacho-temp-td"><label for="tacho-controller-temp-l1" class="can-input" >controller Limp 1:</label></td>
+                            <td class="tacho-temp-td"><input type="number" class="can-input" id="tacho-controller-temp-l1" min="0" value="-1"></td>
+                        </tr>
+                        <tr>
+                            <td class="tacho-temp-td"><label for="tacho-controller-temp-l2" class="can-input" >controller Limp 2:</label></td>
+                            <td class="tacho-temp-td"><input type="number" class="can-input" id="tacho-controller-temp-l2" min="0" value="-1"></td>
+                        </tr>
+                        <tr>
+                            <td class="tacho-temp-td"><label for="tacho-extern-temp-c" class="can-input" >extern Cutoff:</label></td>
+                            <td class="tacho-temp-td"><input type="number" class="can-input" id="tacho-extern-temp-c" min="0" value="-1"></td>
+                        </tr>
+                        <tr>
+                            <td class="tacho-temp-td"><label for="tacho-extern-temp-l1" class="can-input" >extern Limp 1:</label></td>
+                            <td class="tacho-temp-td"><input type="number" class="can-input" id="tacho-extern-temp-l1" min="0" value="-1"></td>
+                        </tr>
+                        <tr>
+                            <td class="tacho-temp-td"><label for="tacho-extern-temp-l2" class="can-input" >extern Limp 2:</label></td>
+                            <td class="tacho-temp-td"><input type="number" class="can-input" id="tacho-extern-temp-l2" min="0" value="-1"></td>
+                        </tr>
+
+                        <tr>
+                            <td class="tacho-temp-td"><label for="tacho-exp1" class="can-input" >experimental 1:</label></td>
+                            <td class="tacho-temp-td"><input type="number" class="can-input" id="tacho-exp1" min="0" value="-1"></td>
+                        </tr>
+                        <tr>
+                            <td class="tacho-temp-td"><label for="tacho-exp2" class="can-input" >experimental 2:</label></td>
+                            <td class="tacho-temp-td"><input type="number" class="can-input" id="tacho-exp2" min="0" value="-1"></td>
+                        </tr>
+
+                        <tr>
+                            <td class="tacho-temp-td"><label for="tacho-ext-temp-protection" class="can-input" >black line, ext protection:</label></td>
+                            <td class="tacho-temp-td">
+                                <input type="checkbox" class="can-input" id="tacho-temp-protection" min="0" value="-1">
+                                <input type="checkbox" class="can-input" id="tacho-ext-temp-protection" min="0" value="-1">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="tacho-temp-td"><label for="tacho-exp1-checkbox" class="can-input" >exp checkbox 1,2:</label></td>
+                            <td class="tacho-temp-td">
+                                <input type="checkbox" class="can-input" id="tacho-exp1-checkbox" min="0" value="-1">
+                                <input type="checkbox" class="can-input" id="tacho-exp2-checkbox" min="0" value="-1">
+                            </td>
+                        </tr>
+                    </table>
+
+                </div>
+            </td>
+
+        </table>
 
 
 
@@ -2085,6 +2435,32 @@
 
 </div>
 
+
+<!-- sandbox for can-plugin loading -->
+<!-- pls fix -->
+
+<iframe sandbox="allow-scripts" id="can-plugin-sandbox" class="display-none">
+<html lang="hu">
+<head>
+    <script>
+        window.addEventListener('message', (e)=> {
+            let mainWindow = e.source;
+
+            console.log(e);
+
+            let result;
+            try {
+                result = eval(e.data);
+            } catch (e) {
+                result = 'eval() threw an exception.';
+            }
+            mainWindow.postMessage(result, e.origin);
+        });
+    </script>
+    <title>sandbox</title>
+</head>
+</html>
+</iframe>
 
 <script src="dist/main.js"></script>
 

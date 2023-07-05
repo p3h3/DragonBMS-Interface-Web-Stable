@@ -94,6 +94,16 @@ Animation for moving in the background
 
 
 
+
+.animateLoading{
+    background: linear-gradient( var(--color-warning) , var(--color-warning)) rgba(0,0,0,0) no-repeat 0 0;
+    background-size: 0 100%;
+}
+
+
+
+
+
 /*
 For the disabled channels
  */
@@ -117,6 +127,72 @@ The "Connect BMS" Overlay still has opacity 1
     pointer-events: none;
 }
 
-.hidden{
+.visibility-hidden{
     visibility: hidden;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+    CAN PFUSCH
+ */
+.can-input{
+    font-size: 1.5vw;
+    font-weight: normal;
+    line-height: 1vw;
+}
+
+input.can-input{
+    width: 50%;
+}
+
+input[type=checkbox].can-input{
+    transform: scale(0.5);
+}
+
+.can-input-td{
+    padding: 0;
 }

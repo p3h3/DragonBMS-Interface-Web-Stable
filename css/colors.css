@@ -14,7 +14,7 @@ body{
 }
 
 .gauge-div{
-    border: 0.5vw solid var(--gauge-div-border-color);
+    border: 0.5vw solid var(--accent-color);
 }
 
 
@@ -44,6 +44,11 @@ td.main-table-td-4row {
 }
 
 
+
+#otaUpdateOverlay{
+    background-color: var(--nothing-connected-overlay-background-color);
+    text-shadow: 2px 2px var(--accent-color);
+}
 
 #nothingConnectedOverlay{
     background-color: var(--nothing-connected-overlay-background-color);
