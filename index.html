@@ -76,7 +76,7 @@
                 <a id="tileBarBoardConfig">BMS Configuration</a>
                 <br>
                 <a id="tileBarTachoConfig">Tacho Configuration</a>
-                <div id="tileBarBMSCalibContainer" class="display-none">
+                <div id="tileBarBMSCalibContainer" class="">
                     <br>
                     <a id="tileBarBoardCalib">BMS Calibration</a>
                 </div>
@@ -695,12 +695,180 @@
             for the rearrange logic to allow placing the dev field here
 
             -->
-            <td class="main-table-td-2row">
-            </td>
+
+        <td class="main-table-td-2row" id="vehicle-model">
+            <div class="gauge-div">
+
+                <div class="vehicle-model-container">
+                    <!-- SVG injection makes the tag style-able since it's an inline SVG object-->
+                    <img src="./img/kart.svg" class="vehicle-model-image"/>
+
+                </div>
+
+                <table class="vehicle-model-table">
+                    <!--
+                        for gokart only!!!!
+                     -->
+                    <tr class="visibility-hidden">
+                        <td>
+                            <input id="reverse-fl" type="checkbox">
+                        </td>
+                        <td>
+                            <div class="vehicle-model-torque">
+                                <div class="vehicle-model-torque-positive vehicle-model-torque-fl"></div>
+                                <div class="vehicle-model-torque-negative vehicle-model-torque-fl"></div>
+                            </div>
+                        </td>
 
 
-            <td class="main-table-td-2row">
-            </td>
+                        <!-- inverted order here because css spec is weird
+                        - float right elements are in inverse order -->
+                        <td>
+                            <input id="reverse-fr" type="checkbox">
+                        </td>
+                        <td>
+                            <div class="vehicle-model-torque">
+                                <div class="vehicle-model-torque-positive vehicle-model-torque-fr"></div>
+                                <div class="vehicle-model-torque-negative vehicle-model-torque-fr"></div>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <input id="reverse-rr" type="checkbox" class="visibility-hidden">
+                        </td>
+                        <td>
+                            <div class="vehicle-model-torque">
+                                <div class="vehicle-model-torque-positive vehicle-model-torque-rr"></div>
+                                <div class="vehicle-model-torque-negative vehicle-model-torque-rr"></div>
+                            </div>
+                        </td>
+
+                        <!-- inverted order here because css spec is weird
+                        - float right elements are in inverse order -->
+                        <td>
+                            <input id="reverse-rl" type="checkbox" class="visibility-hidden">
+                        </td>
+                        <td>
+                            <div class="vehicle-model-torque">
+                                <div class="vehicle-model-torque-positive vehicle-model-torque-rl"></div>
+                                <div class="vehicle-model-torque-negative vehicle-model-torque-rl"></div>
+                            </div>
+                        </td>
+                    </tr>
+
+                </table>
+
+
+            </div>
+        </td>
+
+        <td class="main-table-td-2row board-element">
+            <div class="gauge-div">
+
+                <table class="table-4fields">
+                    <tr>
+                        <td>
+                            <div>
+                                <div>
+                                    <h5 class="bms-precharge-temp-label">BMS<br>Temp:</h5>
+                                    <h3 class="bms-precharge-temp-value">°C</h3>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div>
+                                <div>
+                                    <h5>BMS Temp:</h5>
+                                    <h3 class="bms-shunt-temp-value">°C</h3>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div>
+                                <div>
+                                    <h5>Motor Temp:</h5>
+                                    <h3 class="tacho-motor-temp-value">°C</h3>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div>
+                                <div>
+                                    <h5>T-Extern Temp:</h5>
+                                    <h3 class="tacho-extern-temp-value">°C</h3>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+
+                <div class="big-value-flex-div height30">
+                    <div class="normal-div">
+                        <h4 class="h1-label">Power:</h4>
+                        <h1 class="bms-combined-power-value">0W</h1>
+                    </div>
+                </div>
+
+                <div class="big-value-flex-div height30">
+                    <div class="normal-div width100">
+                        <div class="normal-div float-left width50">
+                            <h4 class="h1-label">Speed:</h4>
+                            <div class="normal-div width100">
+                                <div class="normal-div float-left width50" style="text-align: right">
+                                    <h2 class="tacho-speed-value-no-unit">0</h2>
+                                </div>
+                                <div class="normal-div float-right width50">
+                                    <h4>km/h</h4>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="normal-div float-right width50">
+                            <h4 class="h1-label">Current:</h4>
+                            <h2 class="bms-combined-current-value">0A</h2>
+                        </div>
+                    </div>
+                </div>
+
+                <table class="table-4fields">
+                    <tr>
+                        <td>
+                            <div>
+                                <div>
+                                    <h5>Battery State:</h5>
+                                    <h3 class="bms-min-soc-value">%</h3>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div>
+                                <div>
+                                    <h5>Output Voltage:</h5>
+                                    <h3 class="bms-output-voltage-value">0V</h3>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div>
+                                <div>
+                                    <h5>Power loss:</h5>
+                                    <h3 class="bms-power-loss-value">0W</h3>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div>
+                                <div>
+                                    <h5>Used Energy:</h5>
+                                    <h3 class="bms-combined-energy-used-value">0Wh</h3>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </td>
 
         </tr>
 
@@ -2170,74 +2338,6 @@
 
 
         <table>
-
-            <td class="main-table-td-2row" id="vehicle-model">
-                <div class="gauge-div">
-
-                    <div class="vehicle-model-container">
-                        <!-- SVG injection makes the tag style-able since it's an inline SVG object-->
-                        <img src="./img/gokart_wireframe.svg" class="vehicle-model-image"/>
-
-                    </div>
-
-                    <table class="vehicle-model-table">
-                        <!--
-                            for gokart only!!!!
-                         -->
-                        <tr class="visibility-hidden">
-                            <td>
-                                <input id="reverse-fl" type="checkbox">
-                            </td>
-                            <td>
-                                <div class="vehicle-model-torque">
-                                    <div class="vehicle-model-torque-positive vehicle-model-torque-fl"></div>
-                                    <div class="vehicle-model-torque-negative vehicle-model-torque-fl"></div>
-                                </div>
-                            </td>
-
-
-                            <!-- inverted order here because css spec is weird
-                            - float right elements are in inverse order -->
-                            <td>
-                                <input id="reverse-fr" type="checkbox">
-                            </td>
-                            <td>
-                                <div class="vehicle-model-torque">
-                                    <div class="vehicle-model-torque-positive vehicle-model-torque-fr"></div>
-                                    <div class="vehicle-model-torque-negative vehicle-model-torque-fr"></div>
-                                </div>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>
-                                <input id="reverse-rr" type="checkbox" class="visibility-hidden">
-                            </td>
-                            <td>
-                                <div class="vehicle-model-torque">
-                                    <div class="vehicle-model-torque-positive vehicle-model-torque-rr"></div>
-                                    <div class="vehicle-model-torque-negative vehicle-model-torque-rr"></div>
-                                </div>
-                            </td>
-
-                            <!-- inverted order here because css spec is weird
-                            - float right elements are in inverse order -->
-                            <td>
-                                <input id="reverse-rl" type="checkbox" class="visibility-hidden">
-                            </td>
-                            <td>
-                                <div class="vehicle-model-torque">
-                                    <div class="vehicle-model-torque-positive vehicle-model-torque-rl"></div>
-                                    <div class="vehicle-model-torque-negative vehicle-model-torque-rl"></div>
-                                </div>
-                            </td>
-                        </tr>
-
-                    </table>
-
-
-                </div>
-            </td>
 
 
             <td class="main-table-td-2row" id="can-gauge">
