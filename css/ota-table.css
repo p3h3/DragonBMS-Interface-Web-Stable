@@ -3,6 +3,8 @@
 
     border-spacing: 0;
 
+    font-size: 2vw;
+
     & td {
         border: 1px solid var(--main-table-grid-color);
 
