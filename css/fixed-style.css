@@ -19,7 +19,7 @@ html::-webkit-scrollbar {
 
 #tilebar{
     height: 40px;
-    font-size: 25px;
+    font-size: 27px;
     width: 99vw;
 
     position: fixed;
@@ -81,12 +81,6 @@ html::-webkit-scrollbar {
 .dropdown {
     position: relative;
     display: inline-block;
-
-    border-left: 2px solid var(--accent-color);
-}
-.dropdown:last-of-type{
-    padding-right: 10px;
-    border-right: 2px solid var(--accent-color);
 }
 
 
