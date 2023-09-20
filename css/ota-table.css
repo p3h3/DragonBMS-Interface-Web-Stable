@@ -1,0 +1,33 @@
+.ota-firmwares-table{
+    width: 100%;
+
+    border-spacing: 0;
+
+    & td {
+        border: 1px solid var(--main-table-grid-color);
+
+        margin: 0;
+    }
+
+    & td, & th {
+        width: 10%;
+
+        padding: 0.5vw;
+    }
+
+    & tr td:last-of-type {
+        width: 65%;
+    }
+
+    & tr th:last-of-type {
+        width: 65%;
+    }
+
+    & tr td:first-of-type {
+        width: 5%;
+    }
+
+    & tr th:first-of-type {
+        width: 5%;
+    }
+}

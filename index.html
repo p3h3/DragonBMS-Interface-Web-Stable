@@ -29,6 +29,8 @@
 
     <link rel="stylesheet" href="css/data-distribution.css">
 
+    <link rel="stylesheet" href="css/ota-table.css">
+
     <link rel="icon" type="image/x-icon" href="img/icon/512x512.png">
 
 
@@ -168,8 +170,10 @@
 
 <div id="otaUpdateOverlay" class="visibility-hidden">
     <div id="otaUpdateOverlayContainer">
-            <h2 class="ota-update-text">Performing<br>
-                Update...</h2>
+        <h2 class="ota-update-text">Performing<br>
+            Update...</h2>
+        <br>
+        <h2 id="ota-update-overlay-percent"></h2>
     </div>
 </div>
 
@@ -1032,6 +1036,8 @@
 
 
 
+    <!-- RE ENABLE CLASS DISPLAY NONE-->
+
     <div id="device-info-container" class="display-none">
 
         <h2>Device Info :</h2>
@@ -1055,11 +1061,16 @@
 
         <br>
 
-        <h3>Available images :</h3>
         <div id="available-ota-images-div">
-            <select id="available-ota-images">
-                <option>Choose firmware version</option>
-            </select>
+            <table class="ota-firmwares-table" id="ota-firmwares-table">
+                <tr>
+                    <th></th>
+                    <th>Number</th>
+                    <th>Build</th>
+                    <th>Date</th>
+                    <th>Description</th>
+                </tr>
+            </table>
         </div>
         <br>
         <a id="otaUpdateInfoText" class="display-none"><br></a>
