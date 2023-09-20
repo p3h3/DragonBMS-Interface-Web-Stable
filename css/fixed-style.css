@@ -18,9 +18,9 @@ html::-webkit-scrollbar {
 
 
 #tilebar{
-    height: 50px;
-    font-size: 30px;
-    width: 98vw;
+    height: 40px;
+    font-size: 25px;
+    width: 99vw;
 
     position: fixed;
     z-index: 15;
@@ -30,7 +30,7 @@ html::-webkit-scrollbar {
     justify-content: space-between;
     align-items: center;
 
-    padding-left: 1vw;
+    padding-left: 0;
     padding-right: 1vw;
 }
 
@@ -60,6 +60,9 @@ html::-webkit-scrollbar {
 #tilebar-left > div {
     margin-left: 1vw;
 }
+#tilebar-left > div:first-of-type {
+    margin-left: 0;
+}
 
 
 #tilebar-right{
@@ -78,6 +81,12 @@ html::-webkit-scrollbar {
 .dropdown {
     position: relative;
     display: inline-block;
+
+    border-left: 2px solid var(--accent-color);
+}
+.dropdown:last-of-type{
+    padding-right: 10px;
+    border-right: 2px solid var(--accent-color);
 }
 
 
